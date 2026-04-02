@@ -18,14 +18,15 @@ public interface DishMapper {
 
     /**
      * 根据分类id查询菜品数量
+     *
      * @param categoryId
      * @return
      */
-    @AutoFill(value= OperationType.INSERT)
+    @AutoFill(value = OperationType.INSERT)
     @Select("select count(id) from dish where category_id = #{categoryId}")
     Integer countByCategoryId(Long categoryId);
 
-    @AutoFill(value= OperationType.INSERT)
+    @AutoFill(value = OperationType.INSERT)
     void insert(Dish dish);
 
     Page<DishVO> pageQuery(DishPageQueryDTO dishPageQueryDTO);
@@ -39,12 +40,20 @@ public interface DishMapper {
     void deleteById(Long id);
 
     //根据 id 动态修改菜品
-    @AutoFill(value=OperationType.UPDATE)
+    @AutoFill(value = OperationType.UPDATE)
     void update(Dish dish);
+
     //批量删除菜品
-    void deleteByIds( List<Long> ids);
+    void deleteByIds(List<Long> ids);
+
     //根据条件查询菜品数据
     List<Dish> list(Dish dish);
+
+    //根据套餐id查询菜品选项
+    @Select("select a.* from dish a left join setmeal_dish b on a.id = b.dish_id where b.setmeal_id = #{setmealId}")
+    List<Dish> getBySetmealId(Long setmealId);
+
+
 }
 
 
