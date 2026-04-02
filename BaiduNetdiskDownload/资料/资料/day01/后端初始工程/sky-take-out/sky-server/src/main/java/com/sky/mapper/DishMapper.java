@@ -24,11 +24,12 @@ public interface DishMapper {
     @AutoFill(value= OperationType.INSERT)
     @Select("select count(id) from dish where category_id = #{categoryId}")
     Integer countByCategoryId(Long categoryId);
-    
+
     @AutoFill(value= OperationType.INSERT)
     void insert(Dish dish);
 
     Page<DishVO> pageQuery(DishPageQueryDTO dishPageQueryDTO);
+
 
     @Select("select * from dish where id = #{id}")
     Dish getById(Long id);
@@ -40,7 +41,7 @@ public interface DishMapper {
     //根据 id 动态修改菜品
     @AutoFill(value=OperationType.UPDATE)
     void update(Dish dish);
-
+    //批量删除菜品
     void deleteByIds( List<Long> ids);
 }
 
