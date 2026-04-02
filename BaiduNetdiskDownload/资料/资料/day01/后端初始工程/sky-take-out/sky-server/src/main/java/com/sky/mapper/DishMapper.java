@@ -43,6 +43,8 @@ public interface DishMapper {
     void update(Dish dish);
     //批量删除菜品
     void deleteByIds( List<Long> ids);
+    //根据条件查询菜品数据
+    List<Dish> list(Dish dish);
 }
 
 
