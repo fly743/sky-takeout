@@ -4,3 +4,9 @@
 *.class
 *Test.java
 **/test/
+# 配置文件（包含敏感信息）
+src/main/resources/application-dev.yml
+
+# 但保留模板文件和主配置文件
+!src/main/resources/application.yml
+!src/main/resources/*.template
