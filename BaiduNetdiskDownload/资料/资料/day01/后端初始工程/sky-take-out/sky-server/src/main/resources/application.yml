@@ -38,9 +38,16 @@ sky:
     admin-secret-key: itcast
     admin-ttl: 5184000000
     admin-token-name: token
+    user-secret-key: xdfly
+    user-ttl: 7200000
+    user-token-name: authentication
 
   alioss:
     endpoint: ${sky.alioss.endpoint}
     access-key-id: ${sky.alioss.access-key-id}
     access-key-secret: ${sky.alioss.access-key-secret}
     bucket-name: ${sky.alioss.bucket-name}
+
+  wechat:
+      appid: ${sky.wechat.appit}
+      secret: ${sky.wechat.secret}
