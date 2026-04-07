@@ -1,6 +1,7 @@
 package com.sky.mapper;
 
 import com.github.pagehelper.Page;
+import com.sky.dto.GoodsSalesDTO;
 import com.sky.dto.OrdersPageQueryDTO;
 import com.sky.entity.Orders;
 import org.apache.ibatis.annotations.Mapper;
@@ -74,4 +75,11 @@ public interface OrderMapper {
      * @return
      */
     Integer countByMap(Map map);
+//    select od.name,sum(od.number) number
+//    from order_detail od,orders o隐式内连接
+//    where od.order_id = o.id and o.status = 5 and o.order_time > '2024-1-26' and o.order_time < '2024-1-28'
+//    group by od.name
+//    order by number desc
+//    limit 0,10
+    List<GoodsSalesDTO> getSalesTop10(LocalDateTime beginTime, LocalDateTime endTime);
 }
