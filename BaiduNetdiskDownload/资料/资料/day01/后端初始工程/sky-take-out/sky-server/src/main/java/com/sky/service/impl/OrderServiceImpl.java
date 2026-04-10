@@ -278,7 +278,6 @@ public class OrderServiceImpl implements OrderService {
         // 将订单详情对象转换为购物车对象
         List<ShoppingCart> shoppingCartList = orderDetailList.stream().map(x -> {
             ShoppingCart shoppingCart = new ShoppingCart();
-
             // 将原订单详情里面的菜品信息重新复制到购物车对象中
             BeanUtils.copyProperties(x, shoppingCart, "id");
             shoppingCart.setUserId(userId);
@@ -286,6 +285,7 @@ public class OrderServiceImpl implements OrderService {
 
             return shoppingCart;
         }).collect(Collectors.toList());
+
 
         // 将购物车对象批量添加到数据库
         shoppingCartMapper.insertBatch(shoppingCartList);
