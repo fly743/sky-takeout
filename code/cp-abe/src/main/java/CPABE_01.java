@@ -9,15 +9,13 @@ import java.util.stream.Collectors;
 
 /**
  * CP-ABE 属性基加密系统
- * 访问策略：AND 门限
+ * 访问策略：AND
  */
 public class CPABE_01 {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        System.out.println("=====================================");
         System.out.println("   CP-ABE 属性基加密系统");
-        System.out.println("=====================================");
 
         CPABEAlgorithm cpabe = new CPABEAlgorithm();
 
@@ -235,7 +233,7 @@ class CPABEAlgorithm {
         // 生成加密随机数 s
         Element s = pairing.getZr().newRandomElement().getImmutable();
         
-        // 将明文映射到 GT 群
+
         Element M = pairing.getGT().newElement();
         M.setFromHash(msg.getBytes(StandardCharsets.UTF_8), 0, msg.length());
 
